@@ -84,3 +84,10 @@ body{
     
 }
 
+
+
+.event_section{
+    min-width: 800px;
+    min-height: 200px;
+    box-shadow: 0px 0px 8px 22px rgba(206, 22, 22, 0.2);
+}
