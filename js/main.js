@@ -2,8 +2,11 @@
 const calendar = document.querySelector('#calendar');
 const dates = document.querySelector('#dates')
 const all_dates = document.querySelectorAll('td');
+const all_day_week = document.querySelectorAll('th');
 const event_section = document.querySelector('.event_section');
 const time = document.getElementById('time');
+const p_Mounth_Years = document.getElementById('p_Mounth_Years');
+console.log(p_Mounth_Years);
 
 //Start
 function updateTime(){
@@ -21,6 +24,23 @@ time_promise.then(()=>{
 
 setInterval(updateTime, 1000);
 //Добавить даты динамически
+console.log(all_day_week);
+const mainDate = new Date();
+let currentMonth = mainDate.getMonth();
+let currentYeare = mainDate.getFullYear();
+console.log(currentMonth);
+console.log(currentYeare);
+console.log(p_Mounth_Years);
+
+p_Mounth_Years.textContent = month[currentMonth] + " " + currentYeare.toString();
+
+
+
+
+
+
+
+
 
 
 
