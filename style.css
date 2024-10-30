@@ -89,14 +89,14 @@ body{
 
 
 .event_section{
-    display: none !important;
+    display: none;
     margin-top: 100px;
     min-width: 800px;
     min-height:695px;
     background-color: #363636;
     border-left: solid 1px #FFFFFF;
     box-shadow: 32px 0px 10px 34px rgba(255, 255, 255, 0.2);
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
