@@ -166,7 +166,7 @@ body{
 
 
 .timer_animation{
-    animation: 5s show ease;
+    animation: 7s show ease;
 }
 
 @keyframes show {

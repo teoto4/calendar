@@ -6,17 +6,20 @@ const event_section = document.querySelector('.event_section');
 const time = document.getElementById('time');
 
 //Start
-const time_promise = new Promise(()=>{
-    setInterval(()=>{
-        const now = new Date();
-        console.log('hello');
-        time.textContent = now.getHours() +":" + now.getMinutes() + ":" + now.getSeconds();
-    }, 1000);
+function updateTime(){
+    const now = new Date();
+    console.log('hello');
+    time.textContent = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+}
+const time_promise = new Promise((resolve)=>{
+    updateTime();
+    resolve();
 });
 time_promise.then(()=>{
     time.classList.add('timer_animation');
 });
 
+setInterval(updateTime, 1000);
 //Добавить даты динамически
 
 
