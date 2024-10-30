@@ -79,15 +79,7 @@ body{
                 &:hover{
                     box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
                 }
-                &::after{
-                    display: none !important;
-                    height: 5px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    content: url(./img/icon/yellow_circle.png);
-                    transform: scale(.2)
-                }
+                
             }
         }
     }
@@ -151,4 +143,22 @@ body{
         }
     }
     
+}
+
+
+.time{
+    position: fixed;
+    top: 20px;
+}
+
+
+.event_indicator{
+    &::after{  
+        height: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        content: url(./img/icon/blue_cirle.png);
+        transform: scale(.2)
+    }
 }

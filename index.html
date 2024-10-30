@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <p class="time">13:35</p>
     <div class="calendar_body">
         <div class="calendar_head">
             <p>January 2023</p>
@@ -19,7 +20,7 @@
             </div>
         </div>
         
-        <table class="calendar">
+        <table id="calendar" class="calendar">
             <thead>
                 <tr>
                     <th>Mo</th>
@@ -31,10 +32,10 @@
                     <th>Su</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="dates">
                 <tr>
                     <td>1</td>
-                    <td>2</td>
+                    <td class="event_indicator">2</td>
                     <td>3</td>
                     <td>4</td>
                     <td>5</td>
@@ -86,9 +87,14 @@
             <li>Testing</li>
         </ul>
         <form action="">
-            <input type="text">
+            <input type="text" required>
             <button>Add Task</button>
         </form>
     </div>
+
+
+
+    <script src="./js/date.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 </html>
