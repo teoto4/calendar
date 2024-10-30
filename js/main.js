@@ -5,19 +5,34 @@ const all_dates = document.querySelectorAll('td');
 const event_section = document.querySelector('.event_section');
 const time = document.getElementById('time');
 
-console.log(event_section);
 //Start
-// let year = 2024;
-// let month = 0;
+const time_promise = new Promise(()=>{
+    setInterval(()=>{
+        const now = new Date();
+        console.log('hello');
+        time.textContent = now.getHours() +":" + now.getMinutes() + ":" + now.getSeconds();
+    }, 1000);
+});
+time_promise.then(()=>{
+    time.classList.add('timer_animation');
+});
 
-let timer_interval = setInterval(()=>{
-    const now = new Date();
-    console.log('hello');
-    time.textContent = now.getHours() +":" + now.getMinutes() + ":" + now.getSeconds();
-}, 1000);
+//Добавить даты динамически
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+//Прошелся по всем ячейкам и добавил открытие окна с ивентами
 for(let i = 0; i < all_dates.length; i++){
     all_dates[i].addEventListener(('click'), (e)=>{
         console.log('working');
