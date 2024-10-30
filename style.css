@@ -41,7 +41,7 @@ body{
         }
     }
     
-    margin-top: 100px;
+    margin-top: 130px;
     min-width: 800px;
     min-height:200px;
     box-shadow: 0px 0px 8px 22px rgba(0, 0, 0, 0.2);
@@ -148,7 +148,8 @@ body{
 
 .time{
     position: fixed;
-    top: 20px;
+    top: 0px;
+    font-size: 92px;
 }
 
 
@@ -164,7 +165,7 @@ body{
 }
 
 
-
+/*Анимации*/
 .timer_animation{
     animation: 4s show ease;
 }
