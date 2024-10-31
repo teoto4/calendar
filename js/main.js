@@ -40,26 +40,44 @@ let currentYeare = mainDate.getFullYear();
 function render() {
     const firstDay = new Date(currentYeare, currentMonth, 1);
     const lastDay = new Date(currentYeare, currentMonth + 1, 0);
-    console.log(firstDay);
-    console.log(lastDay);
-    
-    
-    const firstDayIndex = firstDay.getDay() - 1;
+    let firstDayIndex = firstDay.getDay() - 1;
+    if (firstDayIndex < 0) {
+        firstDayIndex = 6;
+    }
     const lastDate = lastDay.getDate();
-    console.log(lastDate);
     
-    
+
+ 
     all_dates.forEach(date => {
         date.textContent = '';
     });
 
-    
+
+    const backMonth = new Date(currentYeare, currentMonth, 0);
+    const backMonthLastDate = backMonth.getDate();
+    console.log(backMonth);
+    console.log(backMonthLastDate);
     let date = 1;
 
+
+    for (let i = 0; i < firstDayIndex; i++) {
+        const td = all_dates[i];
+        td.textContent = backMonthLastDate - firstDayIndex + i + 1;
+        td.classList.add('prev-month');
+    }
+    
+    
     for (let i = firstDayIndex; i < firstDayIndex + lastDay.getDate(); i++) {
         all_dates[i].textContent = date;
         date++;
+        all_dates[i].classList.remove('prev-month', 'next-month');
     }
+
+    for (let i = lastDay.getDate() + firstDayIndex; i < 35; i++) {
+        all_dates[i].textContent = i - firstDayIndex - lastDate + 1;
+        all_dates[i].classList.add('next-month');
+    }
+    
 }
 
 

@@ -90,7 +90,7 @@ body{
 
 .event_section{
     display: none;
-    margin-top: 125px;
+    margin-top: 130px;
     min-width: 800px;
     min-height:695px;
     background-color: #363636;
@@ -163,6 +163,15 @@ body{
         transform: scale(.2)
     }
 }
+
+.prev-month {
+    color: grey !important;
+}
+
+.next-month {
+    color: grey !important;
+}
+
 
 
 /*Анимации*/
