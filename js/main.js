@@ -155,7 +155,22 @@ for(let i = 0; i < all_dates.length; i++){
         } else{
             event_section.style.display = 'flex'
         }
-        
+
+        // form_button.addEventListener(('click'), (e)=>{
+        //     e.preventDefault();
+
+        //     tasks.textContent = event_text.value;
+        //     eventTime.textContent = event_time.value.toString();
+            
+        //     const eventTime = event_time.value;
+        //     const eventText = event_text.value;
+        //     const eventKey = all_dates[i].id;
+        //     const event1 = ADD_event(eventTime, eventText);
+        //     console.log(event1);
+            
+        //     localStorage.setItem(eventKey, event1);
+        //     addEvents(eventKey);
+        // })
         
     });
 }
@@ -169,11 +184,24 @@ const form_button = document.getElementById('form_button');
 const tasks_time = document.querySelector('.tasks_time');
 const tasks = document.querySelector('.tasks');
 
-form_button.addEventListener(('click'), (e)=>{
+// function ADD_event(time, tasks) {
+//     this.time = time;
+//     this.tasks = tasks;
+// }
+
+// function addEvents(eventKey){
+//     tasks.textContent = localStorage.getItem(eventKey)
+// }
+
+form_button.addEventListener('click', (e)=>{
     e.preventDefault();
-    
-    const eventTime = event_time.value;
-    const eventText = event_text.value;
-    const eventKey = all_dates[dayClikedIndex].toString() + " " + currentMonth.toString() + " " + currentYeare.toString();
-    console.log(eventKey);
+    tasks_time.textContent = '';
+    const li_task = document.createElement('li');
+    const li_time = document.createElement('li');
+    li_task.textContent = ` - ${event_text.value}`;
+    li_time.textContent =  event_time.value.toString();
+    tasks_time.append(li_time);
+    tasks.append(li_task);
+    event_text.value = '';
+    event_time.value = 0;
 })

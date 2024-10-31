@@ -170,7 +170,7 @@ body{
         display: flex;
         justify-content: center;
         align-items: center;
-        content: url(./img/icon/blue_cirle.png);
+        content: url(./img/icon/yellow_circle.png);
         transform: scale(.2)
     }
 }
