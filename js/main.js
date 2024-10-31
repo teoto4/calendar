@@ -9,7 +9,7 @@ const p_Mounth_Years = document.getElementById('p_Mounth_Years');
 const back_month = document.getElementById('back_month');
 const next_month = document.getElementById('next_month');
 
-
+let next_month_dayClick;
 
 
 //Start
@@ -75,6 +75,7 @@ function render() {
         all_dates[i].textContent = i - firstDayIndex - lastDate + 1;
         all_dates[i].classList.add('next-month');
         all_dates[i].addEventListener('click', next_month_func);
+        next_month_dayClick = firstDayIndex + lastDay.getDate();
     }
     
 }
@@ -154,6 +155,8 @@ for(let i = 0; i < all_dates.length; i++){
         } else{
             event_section.style.display = 'flex'
         }
+
+        dayClikedIndex = i;
     });
 }
 
@@ -168,11 +171,17 @@ const tasks = document.querySelector('.tasks');
 
 form_button.addEventListener(('click'), (e)=>{
     e.preventDefault();
-
+    console.log(dayClikedIndex);
+    if(dayClikedIndex> next_month_dayClick){
+        dayClikedIndex = 0;
+    }
+    console.log(dayClikedIndex);
     const eventTime = event_time.value;
     const eventText = event_text.value;
     const eventKey = all_dates[dayClikedIndex].toString() + " " + currentMonth.toString() + " " + currentYeare.toString();
-    console.log(eventKey);
+    
 })
+
+
 
 let dayClikedIndex = 0;
