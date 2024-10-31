@@ -64,6 +64,9 @@ function render() {
         const td = all_dates[i];
         td.textContent = backMonthLastDate - firstDayIndex + i + 1;
         td.classList.add('prev-month');
+        all_dates[i].addEventListener(('click'), ()=>{
+            back_month.click();
+        })
     }
     
     
@@ -76,6 +79,11 @@ function render() {
     for (let i = lastDay.getDate() + firstDayIndex; i < 35; i++) {
         all_dates[i].textContent = i - firstDayIndex - lastDate + 1;
         all_dates[i].classList.add('next-month');
+        
+
+        all_dates[i].addEventListener(('click'), ()=>{
+            next_month.click();
+        });
     }
     
 }
@@ -146,5 +154,27 @@ for(let i = 0; i < all_dates.length; i++){
         } else{
             event_section.style.display = 'flex'
         }
+        form_button.addEventListener(('click'), (e)=>{
+            e.preventDefault();
+            localStorage.setItem(i.toString() + " " + currentMonth.toString() + " " + currentYeare.toString(), event_text.value);
+        })
     });
 }
+
+
+//Работа с ивентами
+const myForm = document.getElementById('myForm');
+const event_time = document.getElementById('event_time');
+const event_text = document.getElementById('event_text');
+const form_button = document.getElementById('form_button');
+const tasks_time = document.querySelector('.tasks_time');
+const tasks = document.querySelector('.tasks');
+
+console.log(myForm);
+console.log(event_time);
+console.log(event_text.value);
+console.log(form_button);
+console.log(tasks);
+console.log(tasks_time);
+
+
