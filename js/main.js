@@ -32,9 +32,6 @@ console.log(all_day_week);
 const mainDate = new Date();
 let currentMonth = mainDate.getMonth();
 let currentYeare = mainDate.getFullYear();
-// console.log(currentMonth);
-// console.log(currentYeare);
-// console.log(p_Mounth_Years);
 
 
 function render() {
@@ -64,9 +61,6 @@ function render() {
         const td = all_dates[i];
         td.textContent = backMonthLastDate - firstDayIndex + i + 1;
         td.classList.add('prev-month');
-        all_dates[i].addEventListener(('click'), ()=>{
-            back_month.click();
-        })
     }
     
     
@@ -79,11 +73,6 @@ function render() {
     for (let i = lastDay.getDate() + firstDayIndex; i < 35; i++) {
         all_dates[i].textContent = i - firstDayIndex - lastDate + 1;
         all_dates[i].classList.add('next-month');
-        
-
-        all_dates[i].addEventListener(('click'), ()=>{
-            next_month.click();
-        });
     }
     
 }
@@ -156,7 +145,11 @@ for(let i = 0; i < all_dates.length; i++){
         }
         form_button.addEventListener(('click'), (e)=>{
             e.preventDefault();
-            localStorage.setItem(i.toString() + " " + currentMonth.toString() + " " + currentYeare.toString(), event_text.value);
+
+            const eventTime = event_time.value;
+            const eventText = event_text.value;
+            const eventKey = i.toString() + " " + currentMonth.toString() + " " + currentYeare.toString();
+            localStorage.setItem(eventKey, eventTime + " " + eventText)
         })
     });
 }
