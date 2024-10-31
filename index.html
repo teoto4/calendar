@@ -15,8 +15,8 @@
         <div class="calendar_head">
             <p id="p_Mounth_Years">January 2023</p>
             <div id="control_arrow" class="control_arrow">
-                <img id="back_month" src="./img/icon/Arrow down.png" alt="">
-                <img id="next_month" src="./img/icon/Arrow_up.png" alt="">
+                <img id="back_month" src="./img/icon/Arrow down.png" alt="back_month">
+                <img id="next_month" src="./img/icon/Arrow_up.png" alt="next_month">
             </div>
         </div>
         
@@ -82,12 +82,20 @@
         </table>
     </div>
     <div id="event_section" class="event_section">
-        <ul>
-            <li>Hello</li>
-            <li>Testing</li>
-        </ul>
+        <div class="event_box">
+            <ul class="tasks_time">
+                <li>10:20</li>
+                <li>10:20</li>
+            </ul>
+            <ul class="tasks">
+                <li> - Hello</li>
+                <li> - Testing</li>
+            </ul>
+        </div>
+        
         <form action="">
-            <input type="text" required>
+            <input type="time" class="event_time" id="event_time">
+            <input class="event_text" id="event_text" type="text" required>
             <button>Add Task</button>
         </form>
     </div>
