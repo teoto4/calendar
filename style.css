@@ -149,6 +149,10 @@ body{
             padding: 20px;
         }
     }
+
+    input:focus, button:focus {
+        outline: 2px solid #FFFFFF;
+    }
     
 }
 
@@ -234,4 +238,22 @@ body{
       opacity: 1;
     }
   }
-  
+
+
+
+/*Адаптив*/
+  @media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        font-size: 20px;
+    }
+    .calendar_body {
+        min-width: 100%; 
+    }
+    .event_section {
+        min-width: 100%;
+        margin-top: 20px;
+        border-left: none; 
+        border-top: solid 1px #FFFFFF;
+    }
+}
