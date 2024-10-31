@@ -10,12 +10,11 @@ const back_month = document.getElementById('back_month');
 const next_month = document.getElementById('next_month');
 
 
-console.log(p_Mounth_Years);
+
 
 //Start
 function updateTime(){
     const now = new Date();
-    // console.log('hello');
     time.textContent = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 }
 const time_promise = new Promise((resolve)=>{
@@ -28,13 +27,16 @@ time_promise.then(()=>{
 
 setInterval(updateTime, 1000);
 //Добавить даты динамически
-console.log(all_day_week);
+
 const mainDate = new Date();
 let currentMonth = mainDate.getMonth();
 let currentYeare = mainDate.getFullYear();
+let currentDay = mainDate.getDate();
 
 
 function render() {
+    p_Mounth_Years.textContent = month[currentMonth] + " " + currentYeare.toString();
+
     const firstDay = new Date(currentYeare, currentMonth, 1);
     const lastDay = new Date(currentYeare, currentMonth + 1, 0);
     let firstDayIndex = firstDay.getDay() - 1;
@@ -52,8 +54,6 @@ function render() {
 
     const backMonth = new Date(currentYeare, currentMonth, 0);
     const backMonthLastDate = backMonth.getDate();
-    console.log(backMonth);
-    console.log(backMonthLastDate);
     let date = 1;
 
 
@@ -61,6 +61,7 @@ function render() {
         const td = all_dates[i];
         td.textContent = backMonthLastDate - firstDayIndex + i + 1;
         td.classList.add('prev-month');
+        all_dates[i].addEventListener('click', back_month_func);
     }
     
     
@@ -73,42 +74,52 @@ function render() {
     for (let i = lastDay.getDate() + firstDayIndex; i < 35; i++) {
         all_dates[i].textContent = i - firstDayIndex - lastDate + 1;
         all_dates[i].classList.add('next-month');
+        all_dates[i].addEventListener('click', next_month_func);
     }
     
 }
 
 
+function next_month_func() {
+    if (currentMonth < 11) {
+        currentMonth++;
+    } else {
+        currentMonth = 0;
+        currentYeare++;
+    }
+    render();
+}
 
-
-
+function back_month_func(){
+    if (currentMonth > 0) {
+        currentMonth--;
+    } else {
+        currentMonth = 11;
+        currentYeare--;
+    }
+    render();
+}
 
 
 
 //Переключение месяцев
-p_Mounth_Years.textContent = month[currentMonth] + " " + currentYeare.toString();
 next_month.addEventListener(('click'), ()=>{
     if (currentMonth < 11) {
-        console.log(currentMonth);
         currentMonth++;
     } else{
         currentMonth = 0;
         currentYeare++;
     }
-    
-    p_Mounth_Years.textContent = month[currentMonth] + " " + currentYeare.toString();
     render();
 })
 
 back_month.addEventListener(('click'), ()=>{
     if (currentMonth > 0) {
-        console.log(currentMonth);
         currentMonth--;
     } else{
         currentMonth = 11;
         currentYeare--;
     }
-    
-    p_Mounth_Years.textContent = month[currentMonth] + " " + currentYeare.toString();
     render();
 })
 
@@ -136,21 +147,13 @@ render();
 //Прошелся по всем ячейкам и добавил открытие окна с ивентами
 for(let i = 0; i < all_dates.length; i++){
     all_dates[i].addEventListener(('click'), (e)=>{
-        console.log('working');
+        e.preventDefault();
 
         if(event_section.style.display === 'flex'){
             event_section.style.display = 'none';
         } else{
             event_section.style.display = 'flex'
         }
-        form_button.addEventListener(('click'), (e)=>{
-            e.preventDefault();
-
-            const eventTime = event_time.value;
-            const eventText = event_text.value;
-            const eventKey = i.toString() + " " + currentMonth.toString() + " " + currentYeare.toString();
-            localStorage.setItem(eventKey, eventTime + " " + eventText)
-        })
     });
 }
 
@@ -163,11 +166,13 @@ const form_button = document.getElementById('form_button');
 const tasks_time = document.querySelector('.tasks_time');
 const tasks = document.querySelector('.tasks');
 
-console.log(myForm);
-console.log(event_time);
-console.log(event_text.value);
-console.log(form_button);
-console.log(tasks);
-console.log(tasks_time);
+form_button.addEventListener(('click'), (e)=>{
+    e.preventDefault();
 
+    const eventTime = event_time.value;
+    const eventText = event_text.value;
+    const eventKey = all_dates[dayClikedIndex].toString() + " " + currentMonth.toString() + " " + currentYeare.toString();
+    console.log(eventKey);
+})
 
+let dayClikedIndex = 0;
